@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,12 @@ public class CourseController {
 	@Autowired
 	private ICourseService courseService;
 	
+	
+/*	@PostMapping("bathDelete")
+	public MsgResponse bathDelete(Long[] ids){
+		//return MsgResponse.success("success", list);
+	}*/
+	
 	@GetMapping("findAllCourse")
 	public MsgResponse findAllCourse(){
 		try {
@@ -29,5 +36,7 @@ public class CourseController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
+
 
 }
