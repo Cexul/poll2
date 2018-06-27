@@ -59,6 +59,12 @@ public class GradeServiceImpl implements IGradeService{
 		
 	}
 
+	@Override
+	public List<Grade> query(String keywords) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

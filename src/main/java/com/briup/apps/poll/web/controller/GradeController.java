@@ -37,6 +37,43 @@ public class GradeController {
 		}
 	}
 	
+	@ApiOperation(value="通过关键字查询年级")
+	@GetMapping("queryGrade")
+	public MsgResponse queryGrade(String keywords){
+		try {
+			List<Grade> list=gradeService.query(keywords);
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {		
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}	
+	}
+	
+	@ApiOperation(value="插入年级")
+	@PostMapping("saveGrade")
+	public MsgResponse saveGrade(Grade grade){
+		try {
+			gradeService.save(grade);
+			return MsgResponse.success("success", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}	
+	}
+	
+	@ApiOperation(value="修改年级信息")	
+	@PostMapping("updateGrade")
+	public MsgResponse updateGrade(Grade grade){
+		try {
+			gradeService.update(grade);
+			return MsgResponse.success("success", grade);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}	
+	}
+
+	
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {

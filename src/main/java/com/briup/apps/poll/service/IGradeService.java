@@ -2,7 +2,6 @@ package com.briup.apps.poll.service;
 
 import java.util.List;
 import com.briup.apps.poll.bean.Grade;
-import com.briup.apps.poll.bean.extend.ClazzVM;
 import com.briup.apps.poll.bean.extend.GradeVM;
 
 public interface IGradeService {
@@ -17,6 +16,8 @@ public interface IGradeService {
 	void deleteById(long id) throws Exception;
 	
 	void batchDelete(List<Long> ids) throws Exception;//批量删除
+
+	List<Grade> query(String keywords);
 	
 
 

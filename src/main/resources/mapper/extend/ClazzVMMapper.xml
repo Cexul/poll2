@@ -18,6 +18,7 @@
 		select="com.briup.apps.poll.dao.UserMapper.selectByPrimaryKey">
 	    </association>
 	
-    </resultMap>		
+    </resultMap>	
+    <insert id=""></insert>	
  
 </mapper>

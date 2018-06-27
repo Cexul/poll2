@@ -36,15 +36,53 @@ public class ClazzController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
+	@ApiOperation(value="通过关键字查询班级")
+	@GetMapping("queryClazz")
+	public MsgResponse queryClazz(String keywords){
+		try {
+			List<Clazz> list=clazzService.query(keywords);
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {		
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}	
+	}
+	
+	@ApiOperation(value="插入班级")
+	@PostMapping("saveClazz")
+	public MsgResponse saveClazz(Clazz clazz){
+		try {
+			clazzService.save(clazz);
+			return MsgResponse.success("success", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}	
+	}
+	
+	@ApiOperation(value="修改班级信息")	
+	@PostMapping("updateClazz")
+	public MsgResponse updateClazz(Clazz clazz){
+		try {
+			clazzService.update(clazz);
+			return MsgResponse.success("success", clazz);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}	
+	}
+
+	
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
 			
-			List<Long> idList = new ArrayList<>();
+			/*List<Long> idList = new ArrayList<>();
 			for(long id:ids){
 				idList.add(id);
-			}
-			clazzService.batchDelete(idList);
+			}*/
+			clazzService.batchDelete(ids);
 			return MsgResponse.success("删除成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
