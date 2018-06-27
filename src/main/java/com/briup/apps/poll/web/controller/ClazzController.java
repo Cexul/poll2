@@ -37,51 +37,39 @@ public class ClazzController {
 		}
 	}
 	
-	@ApiOperation(value="通过关键字查询班级")
-	@GetMapping("queryClazz")
-	public MsgResponse queryClazz(String keywords){
-		try {
-			List<Clazz> list=clazzService.query(keywords);
-			return MsgResponse.success("success", list);
-		} catch (Exception e) {		
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}	
-	}
+	@ApiOperation(value="保存或更新班级信息",notes="如果参数中有id，说明是一个更新操作，否则为保存")
+	@PostMapping("saveOrUpdateClazz")
 	
-	@ApiOperation(value="插入班级")
-	@PostMapping("saveClazz")
-	public MsgResponse saveClazz(Clazz clazz){
+	public MsgResponse saveOrUpdateClazz(Clazz clazz){
 		try {
-			clazzService.save(clazz);
-			return MsgResponse.success("success", null);
+			if(clazz!=null && clazz.getId()!=null){
+				clazzService.update(clazz);
+			}else{
+				clazzService.save(clazz);
+			}
+			return MsgResponse.success("保存或更新成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
-		}	
+		}
 	}
 	
-	@ApiOperation(value="修改班级信息")	
-	@PostMapping("updateClazz")
-	public MsgResponse updateClazz(Clazz clazz){
+	@ApiOperation(value="删除班级相关信息",notes="输入一个班级id进行删除")
+	@PostMapping("deleteById")
+	public MsgResponse deleteById(long id){
 		try {
-			clazzService.update(clazz);
-			return MsgResponse.success("success", clazz);
+			clazzService.deleteById(id);
+			return MsgResponse.success("删除成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
-		}	
+		}
 	}
-
-	
+		
+	@ApiOperation(value="批量删除班级信息",notes="可一次输入多个id进行删除")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
-			
-			/*List<Long> idList = new ArrayList<>();
-			for(long id:ids){
-				idList.add(id);
-			}*/
 			clazzService.batchDelete(ids);
 			return MsgResponse.success("删除成功", null);
 		} catch (Exception e) {

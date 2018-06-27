@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.briup.apps.poll.bean.Clazz;
 import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.bean.extend.GradeVM;
 import com.briup.apps.poll.service.IGradeService;
@@ -37,43 +38,37 @@ public class GradeController {
 		}
 	}
 	
-	@ApiOperation(value="通过关键字查询年级")
-	@GetMapping("queryGrade")
-	public MsgResponse queryGrade(String keywords){
-		try {
-			List<Grade> list=gradeService.query(keywords);
-			return MsgResponse.success("success", list);
-		} catch (Exception e) {		
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}	
-	}
+	@ApiOperation(value="保存或更新年级信息",notes="如果参数中有id，说明是一个更新操作，否则为保存")
+	@PostMapping("saveOrUpdateGrade")
 	
-	@ApiOperation(value="插入年级")
-	@PostMapping("saveGrade")
-	public MsgResponse saveGrade(Grade grade){
+	public MsgResponse saveOrUpdateGrade(Grade grade){
 		try {
-			gradeService.save(grade);
-			return MsgResponse.success("success", null);
+			if(grade!=null && grade.getId()!=null){
+				gradeService.update(grade);
+			}else{
+				gradeService.save(grade);
+			}
+			return MsgResponse.success("保存或更新成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
-		}	
+		}
 	}
 	
-	@ApiOperation(value="修改年级信息")	
-	@PostMapping("updateGrade")
-	public MsgResponse updateGrade(Grade grade){
+	@ApiOperation(value="年级信息删除",notes="输入一个年级id进行删除")
+	@PostMapping("deleteById")
+	public MsgResponse deleteById(long id){
 		try {
-			gradeService.update(grade);
-			return MsgResponse.success("success", grade);
+			gradeService.deleteById(id);
+			return MsgResponse.success("删除成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
-		}	
+		}
+		
 	}
 
-	
+	@ApiOperation(value="批量删除年级信息",notes="输入多个年级id进行删除")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
