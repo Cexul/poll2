@@ -18,6 +18,12 @@ public class CourseController {
 	@Autowired
 	private ICourseService courseService;
 	
+	
+/*	@PostMapping("bathDelete")
+	public MsgResponse bathDelete(Long[] ids){
+		//return MsgResponse.success("success", list);
+	}*/
+	
 	@GetMapping("findAllCourse")
 	public MsgResponse findAllCourse(){
 		try {
@@ -29,5 +35,7 @@ public class CourseController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
+
 
 }
