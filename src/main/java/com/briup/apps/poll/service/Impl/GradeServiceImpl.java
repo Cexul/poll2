@@ -8,7 +8,6 @@ import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.bean.GradeExample;
 import com.briup.apps.poll.bean.extend.GradeVM;
 import com.briup.apps.poll.dao.GradeMapper;
-import com.briup.apps.poll.dao.extend.ClazzVMMapper;
 import com.briup.apps.poll.dao.extend.GradeVMMapper;
 import com.briup.apps.poll.service.IGradeService;
 @Service
