@@ -30,5 +30,6 @@ public class QuestionServiceImpl implements IQuestionService{
 	public List<QuestionVM> findAllQuestionVM() throws Exception {
 		return questionVMMapper.selectAll();
 	}
+	
 
 }

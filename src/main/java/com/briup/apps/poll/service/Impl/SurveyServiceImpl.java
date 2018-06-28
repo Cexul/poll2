@@ -31,4 +31,35 @@ public class SurveyServiceImpl implements ISurveyService{
 		return surveyVMMapper.selectAll();
 	}
 
+	@Override
+	public void save(Survey survey) throws Exception {
+		surveyMapper.insert(survey);
+		
+	}
+
+	@Override
+	public void update(Survey survey) throws Exception {
+		surveyMapper.updateByPrimaryKey(survey);
+		
+	}
+
+	@Override
+	public void deleteById(long id) throws Exception {
+		surveyMapper.deleteByPrimaryKey(id);
+		
+	}
+
+	@Override
+	public void batchDelete(long[] ids) throws Exception {
+		for(long id:ids) {
+			surveyMapper.deleteByPrimaryKey(id);
+		}	
+	}
+
+	@Override
+	public List<Survey> query(String keywords) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -17,7 +17,7 @@ import com.briup.apps.poll.util.MsgResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description="年级接口")
+@Api(description="年级相关接口")
 @RestController
 @RequestMapping("/grade ")
 public class GradeController {

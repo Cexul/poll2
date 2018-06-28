@@ -38,7 +38,7 @@ public class CourseServiceImpl implements ICourseService {
 
 	@Override
 	public void update(Course course) throws Exception {
-		courseMapper.updateByPrimaryKey(course);
+		courseMapper.updateByPrimaryKeyWithBLOBs(course);
 	}
 
 	@Override
