@@ -8,5 +8,5 @@ import com.briup.apps.poll.bean.extend.QuestionnaireQuestionVM;
 public interface IQuestionnaireQuestionService {
 	List<QuestionnaireQuestion> findAll() throws Exception;
 	
-	List<QuestionnaireQuestionVM> findAllQuestionnaireQuestion() throws Exception;
+	List<QuestionnaireQuestionVM> findAllQuestionnaireQuestionVM() throws Exception;
 }

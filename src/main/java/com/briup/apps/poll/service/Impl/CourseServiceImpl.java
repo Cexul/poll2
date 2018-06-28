@@ -11,23 +11,23 @@ import com.briup.apps.poll.dao.CourseMapper;
 import com.briup.apps.poll.service.ICourseService;
 
 @Service
-public class CourseServiceImpl implements ICourseService{
+public class CourseServiceImpl implements ICourseService {
 	@Autowired
 	private CourseMapper courseMapper;
-
+	
 	@Override
 	public List<Course> findAll() throws Exception {
 		//创建空模板
-		CourseExample example=new CourseExample();
+		CourseExample example = new CourseExample();
 		//调用QBE查询，并且将查询结果返回
-		return courseMapper.selectByExample(example);
+		return courseMapper.selectByExampleWithBLOBs(example);
 	}
 
 	@Override
 	public List<Course> query(String keywords) throws Exception {
-		CourseExample example=new CourseExample();
+		CourseExample example = new CourseExample();
 		example.createCriteria().andNameLike(keywords);
-		return courseMapper.selectByExample(example);
+		return courseMapper.selectByExampleWithBLOBs(example);
 	}
 
 	@Override
@@ -39,7 +39,6 @@ public class CourseServiceImpl implements ICourseService{
 	@Override
 	public void update(Course course) throws Exception {
 		courseMapper.updateByPrimaryKey(course);
-		
 	}
 
 	@Override
@@ -50,10 +49,25 @@ public class CourseServiceImpl implements ICourseService{
 
 	@Override
 	public void batchDelete(List<Long> ids) throws Exception {
-		for(long id:ids) {
+		for(long id : ids){
 			courseMapper.deleteByPrimaryKey(id);
 		}
-		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

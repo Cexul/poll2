@@ -26,7 +26,7 @@ public class QuestionnaireQuestionServiceImpl implements IQuestionnaireQuestionS
 	}
 
 	@Override
-	public List<QuestionnaireQuestionVM> findAllQuestionnaireQuestion() throws Exception {
+	public List<QuestionnaireQuestionVM> findAllQuestionnaireQuestionVM() throws Exception {
 		
 		return questionnairequestionVMMapper.selectAll();
 	}
