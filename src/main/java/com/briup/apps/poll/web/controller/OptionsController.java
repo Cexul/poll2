@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,35 @@ public class OptionsController {
 	@Autowired
 	private IOptionsService optionsService;
 	
+	@ApiOperation(value="保存或更新选项信息",notes="如果参数中有id，说明是一个更新操作，否则为保存")
+	@PostMapping("saveOrUpdateOption")
+	
+	public MsgResponse saveOrUpdateOptions(Options options){
+		try {
+			if(options!=null && options.getId()!=null){
+				optionsService.update(options);
+			}else{
+				optionsService.save(options);
+			}
+			return MsgResponse.success("保存或更新成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	@ApiOperation(value="删除选项相关信息")
+	@PostMapping("deleteById")
+	public MsgResponse deleteById(long id){
+		try {
+			optionsService.deleteById(id);
+			return MsgResponse.success("删除成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
 	@ApiOperation("查询选项信息")
 	@GetMapping("findAllOptionsVM")
 	public MsgResponse findAllOptionsVM(){
@@ -35,7 +65,7 @@ public class OptionsController {
 	}
 	
 	
-	@ApiOperation("查询选项信息")
+	/*@ApiOperation("查询选项信息")
 	@GetMapping("findAllOptions")
 	public MsgResponse findAllOptions(){
 		try {
@@ -45,7 +75,7 @@ public class OptionsController {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
-	}
+	}*/
 	
 	
 
