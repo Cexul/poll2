@@ -11,7 +11,10 @@
     <result column="label" property="label"/>
     <result column="name" property="name"/>
     <result column="score" property="score"/>
-    <association column="grade_id" select="com.briup.apps.poll.dao.OptionsMapper.selectByPrimaryKey" property="question">
+    <association 
+    column="question_id" 
+    select="com.briup.apps.poll.dao.OptionsMapper.selectByPrimaryKey" 
+    property="question">
     </association>
   </resultMap>
 </mapper>
