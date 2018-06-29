@@ -5,6 +5,9 @@
 	<select id="selectAll" resultMap="ClazzVMResultMap">
 		select * from poll_clazz
 	</select>
+	<select id="selectById" parameterType="long" resultMap="ClazzVMResultMap">
+		select * from poll_clazz where id = #{id} 
+	</select>
 	<resultMap type="com.briup.apps.poll.bean.extend.ClazzVM" id="ClazzVMResultMap">
 		<id column="id" property="id"/>
 		<result column="name" property="name"/>

@@ -8,7 +8,7 @@ public interface ClazzVMMapper {
 	
 	List<ClazzVM> selectAll();
 	
-	
+	List<ClazzVM> selectById(long id);
 	
 
 }

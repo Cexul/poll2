@@ -98,7 +98,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from poll_qq
+    from poll_questionnairequestion
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

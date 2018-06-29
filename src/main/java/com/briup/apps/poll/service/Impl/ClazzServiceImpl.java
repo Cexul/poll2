@@ -18,12 +18,6 @@ public class ClazzServiceImpl implements IClazzService{
 	@Autowired
 	private ClazzVMMapper clazzVMMapper;
 
-	/*@Override
-	public List<Clazz> findAll() throws Exception {
-		ClazzExample example = new ClazzExample();
-		return clazzMapper.selectByExampleWithBLOBs(example);
-	}*/
-
 	@Override
 	public List<ClazzVM> findAllClazzVM() throws Exception {
 		ClazzExample example = new ClazzExample();

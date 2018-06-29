@@ -6,12 +6,16 @@
     <!-- id label name score question_id -->
   </select>
   
-  <resultMap type="com.briup.apps.poll.bean.extend.OptionsVM" id="OptionsVMResultMap">
+  <resultMap type="com.briup.apps.poll.bean.extend.OptionsVM" 
+  id="OptionsVMResultMap">
     <id column="id" property="id"/>
     <result column="label" property="label"/>
     <result column="name" property="name"/>
     <result column="score" property="score"/>
-    <association column="grade_id" select="com.briup.apps.poll.dao.OptionsMapper.selectByPrimaryKey" property="question">
+    <association 
+    column="question_id" 
+    select="com.briup.apps.poll.dao.QuestionMapper.selectByPrimaryKey" 
+    property="question">
     </association>
   </resultMap>
 </mapper>
