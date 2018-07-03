@@ -29,18 +29,6 @@ public class AnswersServiceImpl implements IAnswersService{
 
 
 	@Override
-	public void save(Answers answers) throws Exception {
-		answersMapper.insert(answers);
-		
-	}
-
-	@Override
-	public void update(Answers answers) throws Exception {
-		answersMapper.updateByPrimaryKey(answers);
-		
-	}
-
-	@Override
 	public void batchDelete(long[] ids) throws Exception {
 		for(long id:ids) {
 			answersMapper.deleteByPrimaryKey(id);
@@ -60,6 +48,29 @@ public class AnswersServiceImpl implements IAnswersService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public void saveOrUpdate(Answers answers) throws Exception {
+		if(answers.getId()!=null) {
+			answersMapper.updateByPrimaryKey(answers);
+		}else {
+			answersMapper.insert(answers);
+		}
+		
+	}
+
+
+	@Override
+	public List<Answers> findAnswersBySurveyId(long surveyId) throws Exception {
+		AnswersExample example=new AnswersExample();
+		example.createCriteria().andSurveyIdEqualTo(surveyId);
+		
+		return answersMapper.selectByExample(example);
+	}
+
+
+
 
 			
 

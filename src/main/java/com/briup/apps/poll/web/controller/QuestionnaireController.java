@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(description="问卷相关接口")
 @RestController
 @RequestMapping("/questionnaire")
-public class QuestionnaireVMController {
+public class QuestionnaireController {
 		@Autowired
 		private IQuestionnaireService questionnaireService;
 		

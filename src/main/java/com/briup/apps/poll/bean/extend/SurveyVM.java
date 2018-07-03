@@ -6,6 +6,7 @@ import com.briup.apps.poll.bean.User;
 
 public class SurveyVM {
 	private Long id;
+	private Double average;
 	private String status;
 	private String code;
 	private String surveydate;
@@ -19,6 +20,12 @@ public class SurveyVM {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public Double getAverage() {
+		return average;
+	}
+	public void setAverage(Double average) {
+		this.average = average;
+	}
 	public String getStatus() {
 		return status;
 	}
@@ -31,11 +38,11 @@ public class SurveyVM {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getSurveyDate() {
+	public String getSurveydate() {
 		return surveydate;
 	}
-	public void setSurveyDate(String surveyDate) {
-		this.surveydate = surveyDate;
+	public void setSurveydate(String surveydate) {
+		this.surveydate = surveydate;
 	}
 	public Course getCourse() {
 		return course;

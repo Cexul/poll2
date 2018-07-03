@@ -16,12 +16,26 @@ import com.briup.apps.poll.util.MsgResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description="答案相关接口")
+@Api(description="答卷答案相关接口")
 @RestController
 @RequestMapping("/answers ")
 public class AnswersController {
 	@Autowired
 	private IAnswersService answersService;
+	
+	@ApiOperation(value="提交答卷，每个学生提交一份")
+	@PostMapping("sumitAnswer")
+	public MsgResponse sumitAnswer(Answers answers) {
+		try {
+			answersService.saveOrUpdate(answers);
+			return MsgResponse.success("提交成功", null);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	
+	}
 	
 	@ApiOperation(value="查询答案信息")
 	@GetMapping("findAllAnswersVM")
@@ -35,22 +49,7 @@ public class AnswersController {
 		}
 	}
 	
-	@ApiOperation(value="保存或更新答案信息",notes="如果参数中有id，说明是一个更新操作，否则为保存")
-	@PostMapping("saveOrUpdateAnswers")
 	
-	public MsgResponse saveOrUpdateAnswers(Answers answers){
-		try {
-			if(answers!=null && answers.getId()!=null){
-				answersService.update(answers);
-			}else{
-				answersService.save(answers);
-			}
-			return MsgResponse.success("保存或更新成功", null);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}
-	}
 	
 	@ApiOperation(value="删除答案相关信息",notes="输入一个答案id进行删除")
 	@PostMapping("deleteById")

@@ -3,19 +3,31 @@
 <mapper namespace="com.briup.apps.poll.dao.extend.SurveyVMMapper">
  	<select id="selectAll" resultMap="SurveyVMResultMap">
  		select * from poll_survey
- 		<!-- id,status,code,surveyDate,course_id,user_id,clazz_id,questionnaire_id -->
+ 		
  	</select>
- 	<select id="selectById" parameterType="long" resultMap="SurveyVMResultMap">
+ 	<select id="selectByStatus" 
+ 	parameterType="java.lang.String" 
+ 	resultMap="SurveyVMResultMap">
+ 		select * from poll_survey where status = #{status}
+ 		
+ 	</select>
+ 	
+ 	<select 
+ 	id="selectById" 
+ 	parameterType="long" 
+ 	resultMap="SurveyVMResultMap">
  		select * from poll_survey where id = #{id}
- 		<!-- id,status,code,surveyDate,course_id,user_id,clazz_id,questionnaire_id -->
+ 		
  	</select>
  	
  	<!-- 定义结果集 -->
  	<resultMap type="com.briup.apps.poll.bean.extend.SurveyVM" id="SurveyVMResultMap">
  		<id column="id" property="id"/>
- 		<result column="status" property="status"/>
+ 		<result column="average" property="average"/>
+ 		
  		<result column="code" property="code"/>
  		<result column="surveyDate" property="surveydate"/>
+ 		<result column="status" property ="status"/>
  		<association 
  			column="clazz_id" 
  			property="clazzVM"

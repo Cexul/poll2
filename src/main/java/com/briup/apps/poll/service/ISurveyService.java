@@ -17,4 +17,8 @@ public interface ISurveyService {
 	void batchDelete(long[] ids) throws Exception;
 
 	List<Survey> query(String keywords) throws Exception;
+
+    Survey findSurveyById(long id) throws Exception;
+    
+    List<SurveyVM> findByStatus(String status) throws Exception;
 }

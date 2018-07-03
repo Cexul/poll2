@@ -3,7 +3,7 @@
 <mapper namespace="com.briup.apps.poll.dao.extend.QuestionnaireVMMapper">
   <select 
   	id="selectById" 
-  	parameterType="long" 
+ 
   	resultMap="QuestionnaireVMResultMap">
   	select * from poll_questionnaire where id = #{id}
   	<!-- id	name description -->

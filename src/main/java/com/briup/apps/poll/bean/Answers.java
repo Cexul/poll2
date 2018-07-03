@@ -1,5 +1,9 @@
 package com.briup.apps.poll.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="答卷信息")
 public class Answers {
     /**
      *
@@ -8,6 +12,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 10:09:40 GMT+08:00 2018
      */
+	@ApiModelProperty(value="答卷编号")
     private Long id;
 
     /**
@@ -17,6 +22,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 10:09:40 GMT+08:00 2018
      */
+	@ApiModelProperty(value="单选题答案，格式为 第一题分数|第二题分数，eg:5|1|4|3")
     private String selections;
 
     /**
@@ -26,6 +32,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 10:09:40 GMT+08:00 2018
      */
+	@ApiModelProperty(value="复选题答案，格式为 第一题分数|第二题分数，eg:5,3|1,2|4,4|3,5")
     private String checkes;
 
     /**
@@ -35,6 +42,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 10:09:40 GMT+08:00 2018
      */
+	@ApiModelProperty(value="简答题答案，格式为 第一题分数|第二题分数，eg:没听明白|老师语速太快")
     private String content;
 
     /**
@@ -44,6 +52,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 10:09:40 GMT+08:00 2018
      */
+	@ApiModelProperty(value="问卷编号，答卷的外键")
     private Long surveyId;
 
     /**

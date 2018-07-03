@@ -29,9 +29,9 @@ public class SurveyServiceImpl implements ISurveyService {
 			survey.setStatus(Survey.STATUS_INIT);
 			survey.setCode("");
 			//获取当前时间
-			Date now = new Date();
+			Date surveyDate = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String surveydate = sdf.format(now);
+			String surveydate = sdf.format(surveyDate);
 			survey.setSurveydate(surveydate);
 			
 			surveyMapper.insert(survey);
@@ -66,6 +66,18 @@ public class SurveyServiceImpl implements ISurveyService {
 	public List<Survey> query(String keywords) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Survey findSurveyById(long id) throws Exception {
+		
+		return surveyMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<SurveyVM> findByStatus(String status) throws Exception {
+		
+		return surveyVMMapper.selectByStatus(status);
 	}
 
 }

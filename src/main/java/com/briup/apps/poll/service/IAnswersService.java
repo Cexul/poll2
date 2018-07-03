@@ -8,9 +8,8 @@ import com.briup.apps.poll.bean.extend.AnswersVM;
 
 public interface IAnswersService {
 
-	void save(Answers answers)throws Exception;
-	
-	void update(Answers answers)throws Exception;
+	void saveOrUpdate(Answers answers)throws Exception;
+
 	
     void deleteById(long id) throws Exception;
 	
@@ -19,5 +18,7 @@ public interface IAnswersService {
 	List<Clazz> query(String keywords) throws Exception;
 
 	List<AnswersVM> findAllAnswersVM() throws Exception;
+	
+	List<Answers> findAnswersBySurveyId(long surveyId) throws Exception;
 
 }
