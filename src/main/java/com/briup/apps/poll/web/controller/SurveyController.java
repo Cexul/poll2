@@ -27,7 +27,7 @@ public class SurveyController {
 	@Autowired
 	private IAnswersService answersService;
 	
-	@ApiOperation(value="审核课调",notes="返回课调基本信息以及课调中的主观题答案")
+	@ApiOperation(value="去审核课调",notes="返回课调基本信息以及课调中的主观题答案")
 	@GetMapping(value ="toCheckSurvey")
 	public MsgResponse toCheckSurvey(long id) {
 		try {
@@ -49,6 +49,7 @@ public class SurveyController {
 				}
 			}
 			double average=total/answers.size();
+			 
 			surveyVM.setAverage(average);
 			return MsgResponse.success("success", surveyVM);
 		} catch (Exception e) {

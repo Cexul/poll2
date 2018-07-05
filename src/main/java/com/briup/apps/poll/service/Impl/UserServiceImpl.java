@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService{
 		//创建空模板
 		UserExample example = new UserExample();
 		//调用QBE(QueryByExample)查询，并且将查询结果返回
-		example.createCriteria().andNameLike(null);
+		
 		return userMapper.selectByExample(example);
 	}
 
