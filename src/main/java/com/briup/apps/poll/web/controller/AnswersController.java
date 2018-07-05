@@ -34,7 +34,6 @@ public class AnswersController {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
-	
 	}
 	
 	@ApiOperation(value="查询答案信息")
@@ -47,9 +46,7 @@ public class AnswersController {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
-	}
-	
-	
+	}	
 	
 	@ApiOperation(value="删除答案相关信息",notes="输入一个答案id进行删除")
 	@PostMapping("deleteById")
@@ -73,8 +70,6 @@ public class AnswersController {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
-		
-
-}
+		}
 
 }
